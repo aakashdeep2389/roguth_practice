@@ -1,0 +1,37 @@
+Level 2
+The banking system should support ranking accounts based on the total value of transactions.
+
+TOP_ACTIVITY <timestamp> <n> — should return the top n accounts with the highest total value of transactions sorted in descending order (in case of ties, sorted alphabetically by accountId in ascending order). The returned value should be a string representing an array of accounts and transaction values in this format "<accountId1>(<transactionsValue1>), <accountId2>(<transactionsValue2>), ..., <accountIdN>(<transactionsValueN>)".
+Total value of transactions is defined as the sum of all transactions for an account (regardless of how the transaction affects account balance), including the amount of money deposited, withdrawn, and/or successfully transferred (transfers will be introduced on level 3, so you can ignore them for now).
+If less than n accounts exist in the system, return all active accounts (in the described format).
+Examples
+The example below shows how these operations should work (the section is scrollable to the right):
+
+Queries	Explanations
+queries = [
+  ["CREATE_ACCOUNT", "1", "account1"],
+  ["CREATE_ACCOUNT", "2", "account2"],
+  ["CREATE_ACCOUNT", "3", "account3"],
+  ["DEPOSIT", "4", "account1", "2000"],
+  ["DEPOSIT", "5", "account2", "3000"],
+  ["DEPOSIT", "6", "account3", "4000"],
+  ["TOP_ACTIVITY", "7", "3"],
+  ["PAY", "8", "account1", "1500"],
+  ["PAY", "9", "account2", "250"],
+  ["DEPOSIT", "10", "account3", "250"],
+  ["TOP_ACTIVITY", "11", "3"]
+]
+
+returns "true"
+returns "true"
+returns "true"
+returns "2000"
+returns "3000"
+returns "4000"
+returns "account3(4000), account2(3000), account1(2000)"
+returns "500"
+returns "2750"
+returns "4250"
+returns "account3(4250), account1(3500), account2(3250)"
+
+the output should be ["true", "true", "true", "2000", "3000", "4000", "account3(4000), account2(3000), account1(2000)", "500", "2750", "4250", "account3(4250), account1(3500), account2(3250)"].
