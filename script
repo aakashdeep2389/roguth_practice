@@ -1,0 +1,153 @@
+
+
+// console.log("Hello world!");
+
+// [2,4,7,3,1,3,6] input,  create a new array where sum all elements except current index 
+
+// example if current item is 2 then except 2 sum all and place in first position of array and then next javascript
+
+const input = [2,4,7,3,1,3,6]
+// let temp = 0
+// const finaloutput = input.map((item, index)=>{
+//     console.log(item);
+//     return temp += item
+// })
+// console.log('**', finaloutput, temp);
+
+let temp2 = 0
+let arr = []
+for(let i=0; i<input.length; i++){
+    console.log(input[i]);
+    for(let j=0; j<input.length; j++){
+        if(input[i] !== input[j]){
+            temp2 += input
+        }
+    }
+    arr.push(temp2)
+}
+console.log(arr);
+
+//2
+
+//same object key as a new object
+let obj1 = {
+    a:1,
+    b:2,
+    c:3,
+    d:4,
+    e:7
+}
+let obj2 = {
+    a:2,
+    b:2,
+    c:7,
+    d:4,
+    e:7
+}
+
+//ouput  { b:2,  d: 4}
+
+function test(){
+    let output = {}
+for(let key in obj1) {
+    for(let key2 in obj2) {
+        if(obj1[key] == obj2[key2]){
+            // Object.assign(output, { [key]: obj1[key] })
+            output[key] = obj1[key]
+        }
+    }
+}
+}
+console.log(output);
+
+
+//3
+
+//find second larget number
+
+const input = [1,2,16,3,-2,11]
+const input2 = [2,6,3,9,2,5,9]
+const output = new Set(input2.sort((a,b)=>{
+    return a-b;
+}))
+
+const output2 = input2.sort((a, b) => a - b).reverse();
+
+let aaaa;
+for (let i = 0; i < output2.length; i++) {
+    for (let j = i + 1; j < output2.length; j++) {
+        if (output2[i] !== output2[j]) {
+            console.log(output2[i], output2[j]);
+            aaaa = output2[j];
+            break;
+        }
+    }
+    if (aaaa !== undefined) {
+        break;
+    }
+}
+
+console.log(aaaa); // This will log the first element that is not equal to its next element in the sorted and reversed array
+
+//4
+
+//rotate array elements
+
+const array1= [2,5,6,2,11,-4]
+
+function rotateArr(array, shift){
+    for(let i=1; i<shift; i++){
+        let temp = array[0]
+        for(let j=0; j<array.length; j++){
+            console.log(array[j] , array[j+1]);
+            array[j] = array[j+1]
+            
+        }
+        array[array.length - 1] = temp
+    }
+    console.log(array);
+}
+
+rotateArr(array1, 3)
+
+
+//reverse rotate 
+
+const array1= [2,5,6,2,11,-4]
+
+function rotateArr(array, shift){
+    for(let i=1; i<shift; i++){
+        let temp = array[array.length - 1]
+        for(let j=array.length-1; j >= 0; j--){
+            console.log(array[j] , array[j-1]);
+            array[j] = array[j-1]
+        }
+        array[0] = temp
+    }
+    console.log(array);
+}
+
+rotateArr(array1, 3)
+
+//5
+const array = [5,7,9,11,15,17]
+
+function findFirstOddNUmber(array) {
+    startFrom = array[0]
+    endto = array[array.length - 1]
+    let temp = []
+    for (let i = startFrom; i <= endto; i++) {
+        if (i % 2 !== 0) {
+            temp.push(i)
+        }
+    }
+    for (let i = 0; i < temp.length; i++) {
+        if(!array.includes(temp[i])){
+            return temp[i]
+            break;
+        }
+    }
+    return -1; 
+}
+
+console.log(findFirstOddNUmber(array));
